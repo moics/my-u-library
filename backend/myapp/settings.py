@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'ulibrary',
         'USER': 'friday',
         'PASSWORD': 'helloThere1!',
-        'HOST': '172.17.0.3',  # This is the service name in docker-compose.yml
+        'HOST': '172.17.0.3',
         'PORT': '5432',
     }
 }
@@ -101,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'ulibrary.User'
 
 
 # Internationalization
