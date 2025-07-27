@@ -102,7 +102,7 @@ class APILoginView(View):
             username = data['username']
             password = data['password']
             user = authenticate(request, username=username, password=password)
-            print("esta es la datas", password)
+            print("esta es la data", form)
             if user is not None:
                 login(request, user)
                 return api_response({'message': 'Login successful', 'user': serialize_user(user)}, status=200)
@@ -113,6 +113,9 @@ class APILoginView(View):
             return api_response(None, status=400, error="Invalid JSON.")
         except Exception as e:
             return api_response(None, status=500, error=str(e))
+    
+    def options(self, request):
+        return api_response({'message': 'Ok' }, status=200)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class APILogoutView(APIAuthMixin):

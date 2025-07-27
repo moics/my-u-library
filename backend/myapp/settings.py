@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ud^0m@-ua6gk34_se0c^457)oz=bd1_+v!7hmu5f#%y!0*e_$x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ulibrary'
+    'ulibrary',
+    'corsheaders' # for react
 ]
 
 MIDDLEWARE = [
@@ -48,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # for react
+    'django.middleware.common.BrokenLinkEmailsMiddleware' #for react
 ]
 
 ROOT_URLCONF = 'myapp.urls'
@@ -129,3 +132,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+
+#CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:3000',
+#]
+
+#CORS_ALLOWED_ORIGIN_REGEXES = [
+#    'http://localhost:3000',
+#]
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True
+SESSION_COOKIE_HTTPONLY = True
+
+CORS_ORIGIN_ALLOW_ALL = True
